@@ -1,0 +1,22 @@
+filebeat:
+  prospectors:
+  - paths: ['/var/log/service/*']
+    encoding: plain
+    input_type: log
+    document_type: log
+    scan_frequency: 10s
+    multiline:
+      pattern: '^[[:space:]]'
+      negate: false
+      match: after
+
+output:
+  elasticsearch:
+    hosts: ['127.0.0.1:9200']
+    worker: 1
+    index: 'filebeat'
+
+    template:
+      name: 'filebeat'
+      path: '/etc/filebeat/filebeat.template.json'
+      overwrite: false

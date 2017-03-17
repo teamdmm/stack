@@ -35,7 +35,8 @@ apt-get install -y \
         ntp \
         logrotate \
         dhcping \
-        dhcpdump
+        dhcpdump \
+        filebeat
 
 pip install awscli
 
