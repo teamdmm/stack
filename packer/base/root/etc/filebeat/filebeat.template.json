@@ -44,7 +44,7 @@
           "type": "string",
           "index": "not_analyzed"
         },
-        "correlationID" : {
+        "correlationId" : {
           "type": "string",
           "index": "not_analyzed"
         }
