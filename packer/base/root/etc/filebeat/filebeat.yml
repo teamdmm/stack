@@ -12,7 +12,7 @@ filebeat:
 
 output:
   elasticsearch:
-    hosts: ['search-superphone-prod-3nancb7lqhjscutiz4pxr27vmq.us-west-2.es.amazonaws.com:80']
+    hosts: ['search-superphone-prod-2l6b2ytviitkiu2fao4v4sjqoq.us-east-1.es.amazonaws.com:80']
     worker: 1
     index: 'filebeat'
 
