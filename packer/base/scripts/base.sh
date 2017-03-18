@@ -35,21 +35,16 @@ apt-get install -y \
         ntp \
         logrotate \
         dhcping \
-        dhcpdump \
-        filebeat
+        dhcpdump
+# Install filebeat
+
+echo "deb https://packages.elastic.co/beats/apt stable main" |  sudo tee -a /etc/apt/sources.list.d/beats.list
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+apt-get update -y
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get -o Dpkg::Options::="--force-confnew" install -y filebeat
+
 
 pip install awscli
-
-mkdir -p /etc/environment
-mkdir -p /etc/ecs
-
-echo 'SERVER_ENVIRONMENT=production' >> /etc/environment
-echo 'SERVER_GROUP=default' >> /etc/environment
-echo 'SERVER_REGION=us-east-1' >> /etc/environment
-
-echo 'ECS_CLUSTER=${name}' >> /etc/ecs/ecs.config
-echo 'ECS_ENGINE_AUTH_TYPE=docker' >> /etc/ecs/ecs.config
-echo 'ECS_ENGINE_AUTH_DATA={"https://index.docker.io/v1/":{"username":"superphone","password":"team2015$","email":"team@dmm.fm"}}
-' >> /etc/ecs/ecs.config
 
 apt-get dist-upgrade -y
